@@ -1,0 +1,43 @@
+
+body{
+    margin: 0;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.header{
+    background-color:darkslategray;
+    color: white;
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+#titleText{
+    display: inline;
+    font-weight: lighter;
+}
+
+#login{
+    float: right;
+    display: inline;
+    background-color: white;
+    color: darkslategray;
+    padding: 10px;
+    font-size: 17px;
+    width: 130px;
+    transition-duration: 0.3s;
+    border-radius: 30px;
+}
+
+#login:hover {
+    background-color: gray;
+    color: white;
+}
+
+#homeList{
+    margin: 30px;
+}
+
+.listElem{
+    margin: 10px;
+}
