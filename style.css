@@ -7,7 +7,6 @@ body{
 .header{
     background-color:darkslategray;
     color: white;
-    width: 100%;
     padding: 30px;
     margin-bottom: 20px;
 }
@@ -17,8 +16,9 @@ body{
     font-weight: lighter;
 }
 
-#login{
+a, .submitBtn{
     float: right;
+    margin-right: 10px;
     display: inline;
     background-color: white;
     color: darkslategray;
@@ -27,9 +27,11 @@ body{
     width: 130px;
     transition-duration: 0.3s;
     border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
 }
 
-#login:hover {
+a:hover, .submitBtn:hover {
     background-color: gray;
     color: white;
 }
@@ -38,6 +40,56 @@ body{
     margin: 30px;
 }
 
-.listElem{
-    margin: 10px;
+.block{
+    border: 5px lightgray solid;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+#loginForm{
+    margin: 30px;
+    margin-top: 80px;
+}
+
+.formElem{
+    margin: 30px;
+}
+
+input{
+    width: 200px;
+    height: 30px;
+}
+
+.submitBtn{
+    float:left;
+    border: none;
+    background-color: darkslategrey;
+    color: white;
+}
+
+#main{
+    text-align: center;;
+}
+
+.feature{
+    float: none;
+    display: block;
+    margin: 30px;
+    border: 4px lightgray solid;
+    border-radius: 0px;
+    width: 90%;
+}
+
+.listTitle{
+    width: 90%;
+    float: none;
+    display: block;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+#search{
+    float: none;
+    margin: 30px;
 }
