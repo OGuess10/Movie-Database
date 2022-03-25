@@ -69,7 +69,10 @@ input{
 }
 
 #main{
-    text-align: center;;
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    max-width: 1200px;
 }
 
 .feature{
@@ -92,4 +95,48 @@ input{
 #search{
     float: none;
     margin: 30px;
+}
+
+#lists{
+    display: flex;
+    border: 4px gray solid;
+    height: 300px;
+    margin-bottom: 50px;
+}
+
+#columnOne{
+    border: 4px lightgray solid;
+    width: 50%;
+    overflow-y: auto;
+}
+
+#columnTwo{
+    border: 4px lightgray solid;
+    width: 50%;
+    overflow-y: auto;
+}
+
+.lists{
+    display: block;
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+    background-color: white;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.lists:hover{
+    color: darkslategray;
+    cursor: pointer;
+}
+
+#reviews{
+    border: 4px gray solid;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: visible;
+}
+
+.review{
+    border: 4px lightgray solid;
 }
