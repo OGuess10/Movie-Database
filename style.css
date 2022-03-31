@@ -141,3 +141,28 @@ input{
     border: 4px lightgray solid;
     padding: 10px;
 }
+
+#moviePage{
+    text-align: center;;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.add{ 
+    margin:auto;
+}
+
+#peopleCase{
+    border: 4px gray solid;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: visible;
+    margin: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.people{
+    border: 4px lightgray solid;
+    padding: 10px;
+}
