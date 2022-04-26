@@ -22,9 +22,12 @@
     </div>
     <div id="main">
         <p>Welcome to your account.</p>
-        <form>
-            <input type="text" name="search" placeholder="Search for movie">
-            <button class="submitBtn" id="search" type="submit">Search</button>
+        <form id="searchForm" action="databaseFunctions.php" method="GET">
+            <input type="text" name="searchTitle" placeholder="Search for movie title">
+            <input type="text" name="searchComp" placeholder="Search for production company">
+            <input type="date" name="searchDate" placeholder="Search for release date">
+            <input type="text" name="searchPerson" placeholder="Search for person">
+            <input type="submit" value="Search">
         </form>
 
         <h2>Your Lists</h2>
