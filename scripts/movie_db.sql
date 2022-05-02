@@ -2,8 +2,8 @@ CREATE DATABASE MovieDatabase;
 USE MovieDatabase;
 
 CREATE TABLE USER(
-    username VARCHAR(31) NOT NULL,
-    password VARCHAR(31) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY(username)
 );
 CREATE TABLE LIST(
@@ -19,6 +19,12 @@ CREATE TABLE PERSON(
     name VARCHAR(255) NOT NULL,
     gender VARCHAR(255) NOT NULL,
     biography VARCHAR(2047),
+    screenwriter
+    actor BOOL DEFAULT 0,
+    director BOOL DEFAULT 0,
+    film_crew BOOL DEFAULT 0,
+    exec_producer BOOL DEFAULT 0,
+    producer BOOL DEFAULT 0,
     PRIMARY KEY(person_id)
 );
 CREATE TABLE MOVIE(
@@ -32,7 +38,57 @@ CREATE TABLE MOVIE_GENRE(
     movie_id INT NOT NULL,
     genre VARCHAR(255) NOT NULL,
     FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
-    PRIMARY KEY(genre)
+    PRIMARY KEY(movie_id, genre)
+);
+CREATE TABLE AWARD(
+    movie_id INT NOT NULL,
+    award_show VARCHAR(255) NOT NULL,
+    award_name VARCHAR(255) NOT NULL,
+    award_year INT NOT NULL,
+    FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
+    PRIMARY KEY(movie_id, award_show, award_name, award_year)
+);
+CREATE TABLE PRODUCTION_COMPANY(
+    movie_id INT NOT NULL,
+    company_name VARCHAR(255),
+    biography VARCHAR(2047),
+    FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
+    PRIMARY KEY(movie_id, company_name)
+);
+CREATE TABLE INVOLVED_WITH(
+    movie_id INT NOT NULL,
+    person_id INT NOT NULL,
+    position VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
+    FOREIGN KEY(person_id) REFERENCES PERSON(person_id),
+    PRIMARY KEY(movie_id, person_id, position, description)
+);
+
+CREATE TABLE REVIEWS(
+    username VARCHAR(255) NOT NULL,
+    movie_id INT NOT NULL,
+    num_stars INT NOT NULL,
+    review_text VARCHAR(2047) NUT NULL,
+    FOREIGN KEY(username) REFERENCES USER(username),
+    FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
+    PRIMARY KEY(username, movie_id, num_stars, review_text)
+);
+
+CREATE TABLE IN(
+    list_id INT NOT NULL,
+    movie_id INT NOT NULL,
+    FOREIGN KEY(list_id) REFERENCES LIST(movie_id),
+    FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
+    PRIMARY KEY(list_id, movie_id)
+);
+
+CREATE TABLE CURATES(
+    username VARCHAR(255) NOT NULL,
+    list_id INT NOT NULL,
+    FOREIGN KEY(username) REFERENCES USER(username),
+    FOREIGN KEY(list_id) REFERENCES LIST(movie_id),
+    PRIMARY KEY(username, list_id)
 );
 
 /*
