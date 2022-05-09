@@ -31,6 +31,10 @@ INSERT INTO ACCOUNT_LIST
 INSERT INTO CURATES
 	VALUES("user", "1");
 
+-- Function 4: Add To List --
+INSERT IGNORE INTO IN_LIST
+	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites"), (SELECT movie_id FROM MOVIE WHERE title = "La La Land"), "La La Land");
+
 -- Function 8: Create User --
 INSERT IGNORE INTO ACCOUNT
 	VALUES("user", "password");
