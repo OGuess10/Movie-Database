@@ -12,6 +12,10 @@ UPDATE IN_LIST, MOVIE
 SET movie_title = MOVIE.title
 WHERE 1 = IN_LIST.movie_id = MOVIE.movie_id;
 
+-- ---------------------- --
+--        Queries         --
+-- ---------------------- --
+
 -- Function 2: Search Movie --
 SELECT title AS "Movie Title"
 FROM MOVIE, PRODUCTION_COMPANY
@@ -40,4 +44,5 @@ WHERE username = "user";
 SELECT title AS "Movie Title", AVG(num_stars) AS "Average Star Rating"
 FROM MOVIE, REVIEWS
 WHERE MOVIE.movie_id = REVIEWS.movie_id
-GROUP BY title;
+GROUP BY title
+ORDER BY AVG(num_stars) DESC;

@@ -91,7 +91,8 @@ WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
 SELECT title AS "Movie Title", AVG(num_stars) AS "Average Star Rating"
 FROM MOVIE, REVIEWS
 WHERE MOVIE.movie_id = REVIEWS.movie_id
-GROUP BY title;
+GROUP BY title
+ORDER BY AVG(num_stars) DESC;
 
 -- ----------------------- --
 
