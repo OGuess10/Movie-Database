@@ -12,6 +12,14 @@ CREATE TABLE ACCOUNT(
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY(username)
 );
+
+CREATE TABLE CURATES(
+    username VARCHAR(255) NOT NULL,
+    list_id INT NOT NULL,
+    FOREIGN KEY(username) REFERENCES ACCOUNT(username),
+    PRIMARY KEY(list_id)
+);
+
 CREATE TABLE ACCOUNT_LIST(
     list_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
@@ -104,11 +112,4 @@ CREATE TABLE IN_LIST(
     FOREIGN KEY(list_id) REFERENCES CURATES(list_id),
     FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
     PRIMARY KEY(list_id, movie_id)
-);
-
-CREATE TABLE CURATES(
-    username VARCHAR(255) NOT NULL,
-    list_id INT NOT NULL,
-    FOREIGN KEY(username) REFERENCES ACCOUNT(username),
-    PRIMARY KEY(username, list_id)
 );
