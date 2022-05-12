@@ -80,7 +80,7 @@ DELETE FROM REVIEWS WHERE username = @user AND movie_id = @id;
 UPDATE ACCOUNT_LIST
 SET name = @new_name, description = @new_description, last_updated = CURDATE();
 
--- Find all movies person is involved with --
+-- Function 13: Find all movies person is involved with --
 SELECT title FROM MOVIE
 WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
                    WHERE INVOLVED_WITH.movie_id = MOVIE.movie_id
@@ -157,7 +157,15 @@ DELETE FROm PRODUCER WHERE person_id = @id;
 DELETE FROM PERSON WHERE person_id = @id;
 
 -- Function 7: Modify Person -- 
-
+UPDATE PERSON
+SET name = @name
+WHERE NOT name=@name;
+UPDATE PERSON
+SET gender = @gender
+WHERE NOT gender=@gender;
+UPDATE PERSON
+SET biography = @biography
+WHERE NOT biography=@biography;
 
 -- Function 8: Insert Person Into Movie --
 INSERT INTO INVOLVED_WITH
