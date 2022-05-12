@@ -84,6 +84,7 @@ DELETE FROM REVIEWS WHERE username = @user AND movie_id = @id;
 UPDATE ACCOUNT_LIST
 SET name = @new_name, description = @new_description, last_updated = CURDATE();
 
+
 -- ----------------------- --
 
 -- Administrator Functions --
@@ -128,7 +129,7 @@ WHERE @movie_to_change = IN_LIST.movie_id = MOVIE.movie_id;
 -- Function 5: Add Person --
 INSERT INTO PERSON
 	VALUES(@person_id, @name, @gender, @biography);
--- (only use insert statement when person has that specific role)
+	-- (only use insert statement(s) when person has that specific role)
 INSERT INTO SCREENWRITER
 	VALUES(@person_id);
 INSERT INTO ACTOR
@@ -154,7 +155,10 @@ DELETE FROM PERSON WHERE person_id = @id;
 
 -- Function 7: Modify Person -- 
 
+
 -- Function 8: Insert Person Into Movie --
+INSERT INTO INVOLVED_WITH
+	VALUES(@movie_id, @person_id, @position, @description);
 
 
 
