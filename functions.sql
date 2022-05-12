@@ -40,11 +40,13 @@ INSERT INTO REVIEWS
 	VALUES(@user, @movie_id, @stars, @review);
 
 -- Function 6: Remove from List --
-DELETE FROM ACCOUNT_LIST
-WHERE 
-	
-ACCOUNT.username, MOVIE.id, ACCOUNT_LIST.id
-
+DELETE FROM IN_LIST
+WHERE IN_LIST.movie_id = (SELECT movie_id
+							FROM CURATES, IN_LIST
+							WHERE CURATES.list_id=IN_LIST.list_id
+							AND username=@username
+							AND movie_id=@movie_id
+							AND CURATES.list_id=@list_id);
 
 
 -- Function 7: Get Reviews By User --
