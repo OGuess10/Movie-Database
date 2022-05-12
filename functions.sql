@@ -70,8 +70,8 @@ WHERE username = @username AND password = @password;
 
 -- Function 10: Delete List --
 DELETE FROM IN_LIST WHERE list_id = @id;
-DELETE FROM CURATES WHERE list_id = @id;
 DELETE FROM ACCOUNT_LIST WHERE list_id = @id;
+DELETE FROM CURATES WHERE list_id = @id;
 
 -- Function 11: Delete Review --
 DELETE FROM REVIEWS WHERE username = @user AND movie_id = @id;
