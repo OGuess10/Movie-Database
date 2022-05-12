@@ -7,8 +7,8 @@
 -- Function 1: Get Movie Info --
 SELECT title, release_date, gross_revenue, genre, award_show, award_name, award_year, company_name, PERSON.name
 FROM MOVIE, AWARD, MOVIE_GENRE, PRODUCTION_COMPANY, PERSON
-WHERE MOVIE.movie_id = @id
-	OR (person_id IN (SELECT person_id
+WHERE MOVIE.movie_id = @id AND MOVIE_GENRE.movie_id = MOVIE.movie_id = PRODUCTION_COMPANY.movie_id
+	AND (person_id IN (SELECT person_id
                   		FROM INVOLVED_WITH
                   		WHERE movie_id = @id))
 ORDER BY genre, award_show, company_name, PERSON.name;
