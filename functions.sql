@@ -132,6 +132,19 @@ WHERE @movie_to_change = IN_LIST.movie_id = MOVIE.movie_id;
 -- Function 5: Add Person --
 INSERT INTO PERSON
 	VALUES(@person_id, @name, @gender, @biography);
+-- (only use insert statement when person has that specific role)
+INSERT INTO SCREENWRITER
+	VALUES(@person_id);
+INSERT INTO ACTOR
+	VALUES(@person_id);
+INSERT INTO DIRECTOR
+	VALUES(@person_id);
+INSERT INTO FILM_CREW
+	VALUES(@person_id);
+INSERT INTO EXEC_PRODUCER
+	VALUES(@person_id);
+INSERT INTO PRODUCER
+	VALUES(@person_id);
 
 -- Function 6: Delete Person --
 DELETE FROM INVOLVED_WITH WHERE person_id = @id;
