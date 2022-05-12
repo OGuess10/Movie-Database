@@ -93,12 +93,3 @@ INSERT INTO ACCOUNT_LIST
 	VALUES("1", "Favorites", "This is a list of my all time favorite movies.", CURDATE(), NULL);
 INSERT INTO CURATES
 	VALUES("user", "1");
-
--- Function 2: Delete Movie --
-DELETE FROM IN_LIST WHERE movie_id = "001";
-DELETE FROM REVIEWS WHERE movie_id = "001";
-DELETE FROM INVOLVED_WITH WHERE movie_id = "001";
-DELETE FROM AWARD WHERE movie_id = "001";
-DELETE FROM MOVIE_GENRE WHERE movie_id = "001";
-DELETE FROM PRODUCTION_COMPANY WHERE movie_id = "001";
-DELETE FROM MOVIE WHERE movie_id = "001";

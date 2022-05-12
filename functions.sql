@@ -87,7 +87,6 @@ WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
                    AND person_id IN (SELECT person_id FROM PERSON
                                      WHERE name = @personName));
 
-
 -- ----------------------- --
 
 -- Administrator Functions --
