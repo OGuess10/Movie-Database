@@ -77,6 +77,9 @@ INSERT INTO AWARD
 -- Function 4: Add To List --
 INSERT IGNORE INTO IN_LIST
 	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites"), (SELECT movie_id FROM MOVIE WHERE title = "La La Land"), "La La Land");
+UPDATE ACCOUNT_LIST, CURATES, ACCOUNT
+	SET last_updated = CURDATE()
+    WHERE (SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites") = ACCOUNT_LIST.list_id;
 
  -- Function 8: Create User --
 INSERT IGNORE INTO ACCOUNT
