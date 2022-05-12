@@ -101,7 +101,7 @@ CREATE TABLE IN_LIST(
     list_id INT NOT NULL,
     movie_id INT NOT NULL,
     movie_title VARCHAR(255),
-    FOREIGN KEY(list_id) REFERENCES ACCOUNT_LIST(list_id),
+    FOREIGN KEY(list_id) REFERENCES CURATES(list_id),
     FOREIGN KEY(movie_id) REFERENCES MOVIE(movie_id),
     PRIMARY KEY(list_id, movie_id)
 );
