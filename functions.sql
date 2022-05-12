@@ -127,7 +127,22 @@ SET movie_title = MOVIE.title
 WHERE @movie_to_change = IN_LIST.movie_id = MOVIE.movie_id;
 
 -- Function 4: Delete user account --
+DELETE FROM REVIEWS 
+	WHERE username = @username;
 
+DELETE FROM IN_LIST 
+	WHERE list_id IN (SELECT list_id from CURATES WHERE username = &username);
+
+DELETE FROM ACCOUNT-LIST 
+	WHERE list_id IN (SELECT list_id from CURATES WHERE username = &username);
+
+DELETE FROM CURATES 
+	WHERE username = &username;
+
+DELETE FROM ACCOUNT 
+	WHERE username = &username;
+	
+	
 -- Function 5: Add Person --
 INSERT INTO PERSON
 	VALUES(@person_id, @name, @gender, @biography);
