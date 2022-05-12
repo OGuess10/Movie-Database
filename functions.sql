@@ -35,6 +35,16 @@ INSERT INTO CURATES
 INSERT IGNORE INTO IN_LIST
 	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = @username AND CURATES.username = @username AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = @listName), (SELECT movie_id FROM MOVIE WHERE title = @movie), @movie);
 
+-- Function 5: Add Movie Rating --
+INSERT INTO REVIEWS
+	VALUES(@user, @movie_id, @stars, @review);
+
+-- Function 7: Get Reviews By User --
+SELECT title AS "Movie Title", review_text AS "Review", num_stars AS "Star Rating"
+FROM REVIEWS
+INNER JOIN MOVIE ON MOVIE.movie_id = REVIEWS.movie_id
+WHERE username = @user;
+
 -- Function 8: Create User --
 INSERT IGNORE INTO ACCOUNT
 	VALUES(@user, @password);

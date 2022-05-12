@@ -20,3 +20,9 @@ SELECT title FROM MOVIE
 WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
                    WHERE person_id IN (SELECT person_id FROM PERSON
                                      WHERE name = "Emma Stone"));
+
+-- Function 7: Get Reviews By User --
+SELECT title AS "Movie Title", review_text AS "Review", num_stars AS "Star Rating"
+FROM REVIEWS
+INNER JOIN MOVIE ON MOVIE.movie_id = REVIEWS.movie_id
+WHERE username = "user";

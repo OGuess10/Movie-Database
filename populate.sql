@@ -1,3 +1,21 @@
+-- -------------- --
+-- User Functions --
+-- -------------- --
+
+-- Function 5: Add Movie Rating --
+INSERT INTO REVIEWS
+	VALUES("user", "1", "5", "This is the best movie!"),
+    ("user", "2", "3", "I don't remember this movie at all.");
+INSERT INTO REVIEWS
+	VALUES("user2", "2", "4", "This movie was pretty good.");
+
+
+
+
+-- --------------- --
+-- Admin Functions --
+-- --------------- --
+
 -- Function 1: Insert Movie --
 INSERT INTO MOVIE
 	VALUES("001", "La La Land", "2016-12-09", 448900000);
@@ -34,9 +52,27 @@ INSERT INTO AWARD
 INSERT INTO AWARD
 	VALUES("001", "Golden Globes", "Best Motion Picture", 2017);
 
+INSERT INTO MOVIE
+	VALUES("2", "Avatar", "2009-12-18", 2847000000000);
+INSERT INTO MOVIE_GENRE
+	VALUES("2", "Science Fiction");
+INSERT INTO PRODUCTION_COMPANY
+	VALUES("2", "20th Century Fox", "20th Century Studios, Inc., formerly known as 20th Century Fox, is an American film production studio headquartered at the Fox Studio Lot in the Century City area of Los Angeles.[6] It is a subsidiary of Walt Disney Studios, a division of The Walt Disney Company.[7] Walt Disney Studios Motion Pictures distributes and markets the films made under the 20th Century Studios brand.");
+INSERT IGNORE INTO PERSON
+	VALUES("4", "James Cameron", "Male", "James Francis Cameron CC (born August 16, 1954) is a Canadian filmmaker. Best known for making science fiction and epic films, he first gained recognition for directing The Terminator (1984).");
+INSERT IGNORE INTO DIRECTOR
+	VALUES("4");
+INSERT INTO INVOLVED_WITH
+	VALUES("2", "4", "Director", "Cameron directed Avatar.");
+INSERT INTO AWARD
+	VALUES("2", "Oscars", "Academy Award for Best Cinematography", 2010);
+
  -- Function 8: Create User --
 INSERT IGNORE INTO ACCOUNT
 	VALUES("user", "password");
+
+INSERT IGNORE INTO ACCOUNT
+	VALUES("user2", "password2");
 
 -- Function 3: Create User List --
 INSERT INTO ACCOUNT_LIST
