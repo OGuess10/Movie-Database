@@ -26,10 +26,10 @@ OR (MOVIE.movie_id IN (SELECT movie_id
 GROUP BY title;
 
 -- Function 3: Create User List --
-INSERT INTO ACCOUNT_LIST
-	VALUES(@listNum, @name, @description, CURDATE(), NULL);
 INSERT INTO CURATES
 	VALUES(@username, @listNum);
+INSERT INTO ACCOUNT_LIST
+	VALUES(@listNum, @name, @description, CURDATE(), NULL);
 
 -- Function 4: Add To List --
 INSERT IGNORE INTO IN_LIST
