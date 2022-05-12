@@ -66,6 +66,15 @@ INSERT INTO INVOLVED_WITH
 INSERT INTO AWARD
 	VALUES("2", "Oscars", "Academy Award for Best Cinematography", 2010);
 
+INSERT INTO MOVIE
+	VALUES(3, "The Amazing Spiderman", "2012-07-03", 758000000000);
+INSERT INTO MOVIE_GENRE
+	VALUES(3, "Action");
+INSERT INTO PRODUCTION_COMPANY
+	VALUES("3", "Columbia Pictures", "Columbia Pictures Industries, Inc. is an American film production studio that is a member of the Sony Pictures Motion Picture Group,[2] a division of Sony Entertainment's Sony Pictures Entertainment, which is one of the Big Five studios and a subsidiary of the multinational conglomerate Sony.");
+INSERT INTO INVOLVED_WITH
+	VALUES(3, 3, "Actress", "Stone played Gwen Stacy in the film.");
+
 -- Function 8: Create User --
 INSERT IGNORE INTO ACCOUNT
 	VALUES("user", "password");

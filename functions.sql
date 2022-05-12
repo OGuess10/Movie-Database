@@ -14,7 +14,7 @@ WHERE @id = MOVIE.movie_id = MOVIE_GENRE.movie_id = MOVIE.movie_id = PRODUCTION_
 ORDER BY genre, award_show, company_name, PERSON.name;
 
 -- Function 2: Search Movie --
-SELECT title, COUNT(title) AS "Number of Results"
+SELECT title AS "Movie Title"
 FROM MOVIE, PRODUCTION_COMPANY
 WHERE MOVIE.title LIKE @title
 OR MOVIE.release_date LIKE @date
@@ -86,6 +86,12 @@ WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
                    WHERE INVOLVED_WITH.movie_id = MOVIE.movie_id
                    AND person_id IN (SELECT person_id FROM PERSON
                                      WHERE name = @personName));
+
+-- Function 14: Get Star Ratings
+SELECT title AS "Movie Title", AVG(num_stars) AS "Average Star Rating"
+FROM MOVIE, REVIEWS
+WHERE MOVIE.movie_id = REVIEWS.movie_id
+GROUP BY title;
 
 -- ----------------------- --
 
