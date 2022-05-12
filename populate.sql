@@ -9,14 +9,6 @@
 -- User Functions --
 -- -------------- --
 
--- Function 5: Add Movie Rating --
-INSERT INTO REVIEWS
-	VALUES("user", "1", "5", "This is the best movie!"),
-    ("user", "2", "3", "I don't remember this movie at all.");
-INSERT INTO REVIEWS
-	VALUES("user2", "2", "4", "This movie was pretty good.");
-
-
 
 
 -- --------------- --
@@ -74,14 +66,7 @@ INSERT INTO INVOLVED_WITH
 INSERT INTO AWARD
 	VALUES("2", "Oscars", "Academy Award for Best Cinematography", 2010);
 
--- Function 4: Add To List --
-INSERT IGNORE INTO IN_LIST
-	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites"), (SELECT movie_id FROM MOVIE WHERE title = "La La Land"), "La La Land");
-UPDATE ACCOUNT_LIST, CURATES, ACCOUNT
-	SET last_updated = CURDATE()
-    WHERE (SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites") = ACCOUNT_LIST.list_id;
-
- -- Function 8: Create User --
+-- Function 8: Create User --
 INSERT IGNORE INTO ACCOUNT
 	VALUES("user", "password");
 
@@ -89,7 +74,21 @@ INSERT IGNORE INTO ACCOUNT
 	VALUES("user2", "password2");
 
 -- Function 3: Create User List --
-INSERT INTO ACCOUNT_LIST
-	VALUES("1", "Favorites", "This is a list of my all time favorite movies.", CURDATE(), NULL);
 INSERT INTO CURATES
 	VALUES("user", "1");
+INSERT INTO ACCOUNT_LIST
+	VALUES("1", "Favorites", "This is a list of my all time favorite movies.", CURDATE(), NULL);
+
+-- Function 4: Add To List --
+INSERT IGNORE INTO IN_LIST
+	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites"), (SELECT movie_id FROM MOVIE WHERE title = "La La Land"), "La La Land");
+UPDATE ACCOUNT_LIST, CURATES, ACCOUNT
+	SET last_updated = CURDATE()
+    WHERE (SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites") = ACCOUNT_LIST.list_id;
+
+-- Function 5: Add Movie Rating --
+INSERT INTO REVIEWS
+	VALUES("user", "1", "5", "This is the best movie!"),
+    ("user", "2", "3", "I don't remember this movie at all.");
+INSERT INTO REVIEWS
+	VALUES("user2", "2", "4", "This movie was pretty good.");
