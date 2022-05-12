@@ -9,6 +9,14 @@
 INSERT IGNORE INTO IN_LIST
 	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = "user" AND CURATES.username = "user" AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = "Favorites"), (SELECT movie_id FROM MOVIE WHERE title = "La La Land"), "La La Land");
 
+-- Function 3: Modify Movie --
+UPDATE MOVIE
+SET title = "Not La La Land"
+WHERE movie_id = 1;
+UPDATE IN_LIST, MOVIE
+SET movie_title = MOVIE.title
+WHERE 1 = IN_LIST.movie_id = MOVIE.movie_id;
+
 -- Function 2: Search Movie --
 SELECT title, COUNT(title) AS "Number of Results"
 FROM MOVIE, PRODUCTION_COMPANY

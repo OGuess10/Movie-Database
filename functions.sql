@@ -7,7 +7,7 @@
 -- Function 1: Get Movie Info --
 SELECT title, release_date, gross_revenue, genre, award_show, award_name, award_year, company_name, PERSON.name
 FROM MOVIE, AWARD, MOVIE_GENRE, PRODUCTION_COMPANY, PERSON
-WHERE MOVIE.movie_id = @id AND MOVIE_GENRE.movie_id = MOVIE.movie_id = PRODUCTION_COMPANY.movie_id
+WHERE @id = MOVIE.movie_id = MOVIE_GENRE.movie_id = MOVIE.movie_id = PRODUCTION_COMPANY.movie_id
 	AND (person_id IN (SELECT person_id
                   		FROM INVOLVED_WITH
                   		WHERE movie_id = @id))
@@ -39,7 +39,6 @@ INSERT IGNORE INTO IN_LIST
 INSERT INTO REVIEWS
 	VALUES(@user, @movie_id, @stars, @review);
 
-
 -- Function 6: Remove from List --
 
 -- Function 7: Get Reviews By User --
@@ -61,12 +60,21 @@ WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
 
 
 -- Function 9: Login --
+SELECT username AS "Account"
+FROM ACCOUNT
+WHERE username = @username AND password = @password;
 
 -- Function 10: Delete List --
+DELETE FROM IN_LIST WHERE list_id = @id;
+DELETE FROM CURATES WHERE list_id = @id;
+DELETE FROM ACCOUNT_LIST WHERE list_id = @id;
 
 -- Function 11: Delete Review --
+DELETE FROM REVIEWS WHERE username = @user AND movie_id = @id;
 
 -- Function 12: Modify List --
+UPDATE ACCOUNT_LIST
+SET name = @new_name, description = @new_description, last_updated = CURDATE();
 
 -- ----------------------- --
 
@@ -100,6 +108,12 @@ DELETE FROM PRODUCTION_COMPANY WHERE movie_id = @movie_id;
 DELETE FROM MOVIE WHERE movie_id = @movie_id;
 
 -- Function 3: Modify Movie --
+UPDATE MOVIE
+SET title = @new_title, release_date = @new_release_date, gross_revenue = @new_gross_revenue
+WHERE movie_id = @movie_to_change;
+UPDATE IN_LIST, MOVIE
+SET movie_title = MOVIE.title
+WHERE @movie_to_change = IN_LIST.movie_id = MOVIE.movie_id;
 
 -- Function 4: Delete user account --
 
