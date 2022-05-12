@@ -18,6 +18,7 @@ CREATE TABLE ACCOUNT_LIST(
     description VARCHAR(2047),
     date_created DATE NOT NULL,
     last_updated DATE,
+    FOREIGN KEY(list_id) REFERENCES CURATES(list_id),
     PRIMARY KEY(list_id)
 );
 CREATE TABLE PERSON(
