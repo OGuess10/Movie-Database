@@ -110,6 +110,5 @@ CREATE TABLE CURATES(
     username VARCHAR(255) NOT NULL,
     list_id INT NOT NULL,
     FOREIGN KEY(username) REFERENCES ACCOUNT(username),
-    FOREIGN KEY(list_id) REFERENCES ACCOUNT_LIST(list_id),
     PRIMARY KEY(username, list_id)
 );
