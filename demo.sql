@@ -1,3 +1,9 @@
+-- --------------------- --
+
+-- Database Demonstration --
+
+-- --------------------- --
+
 
 -- Function 4: Add To List --
 INSERT IGNORE INTO IN_LIST

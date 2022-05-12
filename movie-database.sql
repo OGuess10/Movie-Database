@@ -1,3 +1,9 @@
+-- --------------------- --
+
+-- Creating the Database --
+
+-- --------------------- --
+
 CREATE DATABASE MovieDatabase;
 USE MovieDatabase;
 
