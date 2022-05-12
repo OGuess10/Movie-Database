@@ -34,6 +34,10 @@ INSERT INTO CURATES
 -- Function 4: Add To List --
 INSERT IGNORE INTO IN_LIST
 	VALUES ((SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = @username AND CURATES.username = @username AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = @listName), (SELECT movie_id FROM MOVIE WHERE title = @movie), @movie);
+UPDATE ACCOUNT_LIST, CURATES, ACCOUNT
+	SET last_updated = CURDATE()
+    WHERE (SELECT ACCOUNT_LIST.list_id FROM ACCOUNT_LIST, ACCOUNT, CURATES WHERE ACCOUNT.username = @username AND CURATES.username = @username AND CURATES.list_id = ACCOUNT_LIST.list_id AND ACCOUNT_LIST.name = @listName) = ACCOUNT_LIST.list_id;
+	
 
 -- Function 5: Add Movie Rating --
 INSERT INTO REVIEWS
