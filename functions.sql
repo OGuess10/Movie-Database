@@ -81,7 +81,7 @@ UPDATE ACCOUNT_LIST
 SET name = @new_name, description = @new_description, last_updated = CURDATE();
 
 -- Function 13: Find all movies person is involved with --
-SELECT title FROM MOVIE
+SELECT title AS "Movie Title" FROM MOVIE
 WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
                    WHERE INVOLVED_WITH.movie_id = MOVIE.movie_id
                    AND person_id IN (SELECT person_id FROM PERSON
