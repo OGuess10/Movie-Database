@@ -39,8 +39,13 @@ INSERT IGNORE INTO IN_LIST
 INSERT INTO REVIEWS
 	VALUES(@user, @movie_id, @stars, @review);
 
-
 -- Function 6: Remove from List --
+DELETE FROM ACCOUNT_LIST
+WHERE 
+	
+ACCOUNT.username, MOVIE.id, ACCOUNT_LIST.id
+
+
 
 -- Function 7: Get Reviews By User --
 SELECT title AS "Movie Title", review_text AS "Review", num_stars AS "Star Rating"
