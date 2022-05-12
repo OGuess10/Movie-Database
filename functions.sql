@@ -39,6 +39,9 @@ INSERT IGNORE INTO IN_LIST
 INSERT INTO REVIEWS
 	VALUES(@user, @movie_id, @stars, @review);
 
+
+-- Function 6: Remove from List --
+
 -- Function 7: Get Reviews By User --
 SELECT title AS "Movie Title", review_text AS "Review", num_stars AS "Star Rating"
 FROM REVIEWS
@@ -55,6 +58,15 @@ WHERE movie_id IN (SELECT movie_id FROM INVOLVED_WITH
                    WHERE INVOLVED_WITH.movie_id = MOVIE.movie_id
                    AND person_id IN (SELECT person_id FROM PERSON
                                      WHERE name = @personName));
+
+
+-- Function 9: Login --
+
+-- Function 10: Delete List --
+
+-- Function 11: Delete Review --
+
+-- Function 12: Modify List --
 
 -- ----------------------- --
 
@@ -86,3 +98,19 @@ DELETE FROM AWARD WHERE movie_id = @movie_id;
 DELETE FROM MOVIE_GENRE WHERE movie_id = @movie_id;
 DELETE FROM PRODUCTION_COMPANY WHERE movie_id = @movie_id;
 DELETE FROM MOVIE WHERE movie_id = @movie_id;
+
+-- Function 3: Modify Movie --
+
+-- Function 4: Delete user account --
+
+-- Function 5: Add Person --
+
+-- Function 6: Delete Person --
+
+-- Function 7: Modify Person -- 
+
+-- Function 8: Insert Person Into Movie --
+
+
+
+
