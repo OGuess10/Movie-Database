@@ -99,8 +99,8 @@ INSERT INTO PRODUCTION_COMPANY
 	VALUES(@id, @company_name, @company_description);
 INSERT IGNORE INTO PERSON
 	VALUES(@person_id, @person_name, @gender, @person_description);
-INSERT IGNORE INTO DIRECTOR
-	VALUES(@person_id);
+--INSERT IGNORE INTO DIRECTOR (or other role)
+--	VALUES(@person_id);
 INSERT INTO INVOLVED_WITH
 	VALUES(@movie_id, @person_id, @position, @description);
 INSERT INTO AWARD
@@ -142,8 +142,15 @@ INSERT INTO EXEC_PRODUCER
 INSERT INTO PRODUCER
 	VALUES(@person_id);
 
-
 -- Function 6: Delete Person --
+DELETE FROM INVOLVED_WITH WHERE person_id = @id;
+DELETE FROM SCREENWRITER WHERE person_id = @id;
+DELETE FROM ACTOR WHERE person_id = @id;
+DELETE FROM DIRECTOR WHERE person_id = @id;
+DELETE FROM FILM_CREW WHERE person_id = @id;
+DELETE FROM EXEC_PRODUCER WHERE person_id = @id;
+DELETE FROm PRODUCER WHERE person_id = @id;
+DELETE FROM PERSON WHERE person_id = @id;
 
 -- Function 7: Modify Person -- 
 
